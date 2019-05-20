@@ -50,24 +50,7 @@ public class Client {
                 getNom() +
                 " (" + getNif() + ")\n";
         for (Lloguer lloguer: lloguers) {
-            double quantitat = 0;
-            switch (lloguer.getVehicle().getCategoria()) {
-                case Vehicle.BASIC:
-                    quantitat += 3;
-                    if (lloguer.getDies() > 3) {
-                        quantitat += (lloguer.getDies() - 3) * 1.5;
-                    }
-                    break;
-                case Vehicle.GENERAL:
-                    quantitat += 4;
-                    if (lloguer.getDies() > 2) {
-                        quantitat += (lloguer.getDies() - 2) * 2.5;
-                    }
-                    break;
-                case Vehicle.DELUXE:
-                    quantitat += lloguer.getDies() * 6;
-                    break;
-            }
+            double quantitat = quantitatPerLloguer(lloguer);
 
             // afegeix lloguers freqüents
             bonificacions ++;
@@ -99,5 +82,27 @@ public class Client {
 
     public void setLloguers(Vector<Lloguer> lloguers) {
         this.lloguers = lloguers;
+    }
+
+    private double quantitatPerLloguer(Lloguer lloguer){
+        double quantitat = 0;
+        switch (lloguer.getVehicle().getCategoria()) {
+            case Vehicle.BASIC:
+                quantitat += 3;
+                if (lloguer.getDies() > 3) {
+                    quantitat += (lloguer.getDies() - 3) * 1.5;
+                }
+                break;
+            case Vehicle.GENERAL:
+                quantitat += 4;
+                if (lloguer.getDies() > 2) {
+                    quantitat += (lloguer.getDies() - 2) * 2.5;
+                }
+                break;
+            case Vehicle.DELUXE:
+                quantitat += lloguer.getDies() * 6;
+                break;
+        }
+        return quantitat;
     }
 }
