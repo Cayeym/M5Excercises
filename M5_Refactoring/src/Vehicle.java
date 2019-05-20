@@ -2,15 +2,18 @@ public class Vehicle {
 
     private String marca;
     private String model;
-    private Categoria categoria;
+    private int categoria;
+    public static int BASIC = 0;
+    public static int GENERAL = 1;
+    public static int DELUXE = 2;
 
-    public Vehicle(){
-        marca = "Sense marca";
-        model = "Sense model";
-        categoria = Categoria.BASIC;
+    public Vehicle(String marca, String model, int categoria){
+        this.marca = marca;
+        this.model = model;
+        this.categoria = wichCategory(categoria);
     }
 
-    public Categoria getCategoria() {
+    public int getCategoria() {
         return categoria;
     }
 
@@ -22,7 +25,7 @@ public class Vehicle {
         return model;
     }
 
-    public void setCategoria(Categoria categoria) {
+    public void setCategoria(int categoria) {
         this.categoria = categoria;
     }
 
@@ -34,7 +37,15 @@ public class Vehicle {
         this.model = model;
     }
 
-    public enum Categoria{
-        BASIC, GENERAL, DELUXE
+    private int wichCategory(int num){
+        if(BASIC == num){
+            return 0;
+        }
+        else if (GENERAL == num){
+            return 1;
+        }
+        else{
+            return 2;
+        }
     }
 }

@@ -1,3 +1,6 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Vector;
 
 public class Client {
@@ -11,6 +14,10 @@ public class Client {
         this.nom = nom;
         this.telefon = telefon;
         this.lloguers = new Vector<Lloguer>();
+    }
+
+    public int getClients() {
+        return lloguers.size();
     }
 
     public String getNif()     { return nif;     }
@@ -39,5 +46,13 @@ public class Client {
     public String informe() {
         // XXX: de moment buit
         return null;
+    }
+
+    public Vector<Lloguer> getLloguers() {
+        return lloguers;
+    }
+
+    public void setLloguers(Vector<Lloguer> lloguers) {
+        this.lloguers = lloguers;
     }
 }
