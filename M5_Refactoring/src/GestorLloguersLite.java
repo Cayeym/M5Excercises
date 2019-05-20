@@ -17,6 +17,7 @@ public class GestorLloguersLite {
         Lloguer c = new Lloguer(date, 5, c1);
         client.afegeix(c);
         printAll(client);
+        System.out.println(client.informe());
     }
 
     public static void printAll(Client client){
