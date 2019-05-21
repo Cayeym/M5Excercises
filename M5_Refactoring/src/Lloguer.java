@@ -5,6 +5,11 @@ public class Lloguer {
     private Date data;
     private int dies;
     private Vehicle vehicle;
+    private static final double IMPOST_PER_DIA_LLOGUER_BASIC = 1.5;
+    private static final double IMPOST_PER_DIA_LLOGUER_GENERAL = 2.5;
+    private static final int IMPOST_PER_DIA_LLOGUER_DELUXE = 6;
+    private static final int MINIM_DIES_PER_IMPOST_BASIC = 3;
+    private static final int MINIM_DIES_PER_IMPOST_GENERAL = 2;
 
     public Lloguer(Date data, int dies, Vehicle vehicle){
         this.data = data;
@@ -40,19 +45,19 @@ public class Lloguer {
         double quantitat = 0;
         switch (vehicle.getCategoria()) {
             case Vehicle.BASIC:
-                quantitat += 3;
-                if (getDies() > 3) {
-                    quantitat += (getDies() - 3) * 1.5;
+                quantitat += MINIM_DIES_PER_IMPOST_BASIC;
+                if (getDies() > MINIM_DIES_PER_IMPOST_BASIC) {
+                    quantitat += (getDies() - 3) * IMPOST_PER_DIA_LLOGUER_BASIC;
                 }
                 break;
             case Vehicle.GENERAL:
                 quantitat += 4;
-                if (getDies() > 2) {
-                    quantitat += (getDies() - 2) * 2.5;
+                if (getDies() > MINIM_DIES_PER_IMPOST_GENERAL) {
+                    quantitat += (getDies() - MINIM_DIES_PER_IMPOST_GENERAL) * IMPOST_PER_DIA_LLOGUER_GENERAL;
                 }
                 break;
             case Vehicle.DELUXE:
-                quantitat += getDies() * 6;
+                quantitat += getDies() * IMPOST_PER_DIA_LLOGUER_DELUXE;
                 break;
         }
         return quantitat;
