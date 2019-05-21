@@ -5,6 +5,7 @@ public class Lloguer {
     private Date data;
     private int dies;
     private Vehicle vehicle;
+    private static final int quantitat = 0;
 
     public Lloguer(Date data, int dies, Vehicle vehicle){
         this.data = data;
