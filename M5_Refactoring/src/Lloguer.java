@@ -5,7 +5,6 @@ public class Lloguer {
     private Date data;
     private int dies;
     private Vehicle vehicle;
-    private static final int quantitat = 0;
 
     public Lloguer(Date data, int dies, Vehicle vehicle){
         this.data = data;
@@ -57,5 +56,16 @@ public class Lloguer {
                 break;
         }
         return quantitat;
+    }
+    public int bonificacions(){
+        int bonificacions = 0;
+        // afegeix lloguers freqüents
+        bonificacions ++;
+
+        // afegeix bonificació per dos dies de lloguer de Luxe
+        if (getVehicle().getCategoria() == Vehicle.DELUXE && getDies()>1 ) {
+            bonificacions ++;
+        }
+        return bonificacions;
     }
 }
