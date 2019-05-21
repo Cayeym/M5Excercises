@@ -1,7 +1,4 @@
 import org.junit.*;
-import org.junit.rules.ExpectedException;
-
-import java.security.PublicKey;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
